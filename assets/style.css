@@ -457,3 +457,9 @@ h1,h2,h3{text-wrap:balance}
 .facts-list dt{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 .facts-list dd{margin:0;font-size:15px;line-height:1.45}
 @media (max-width:1100px){.ov{grid-template-columns:1fr}}
+.card .kind{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.card.lead .kind{font-size:16px;color:var(--accent);font-weight:700;margin-top:10px}
+.home-hero{min-height:auto;padding-top:clamp(48px,9vh,110px);padding-bottom:10px}
+.card h3{font-size:clamp(20px,1.7vw,25px)}
+.card.big h3{font-size:clamp(24px,2.2vw,32px)}
+.card.lead h3{font-size:clamp(34px,4vw,60px)}
