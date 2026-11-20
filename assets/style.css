@@ -54,7 +54,7 @@ h1,h2,h3{text-wrap:balance}
 @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
 
 /* scroll reveal */
-.rv{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rv.in{opacity:1;transform:none}
 .no-js .rv{opacity:1;transform:none}
 
@@ -323,8 +323,10 @@ h1,h2,h3{text-wrap:balance}
 .filters button.on{background:var(--ink);color:var(--cream)}
 .filters button sup{font-size:10px;margin-left:3px}
 
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 22px}
-@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:36px 22px}
+.card{grid-column:span 2}
+.card.big{grid-column:span 3}
+
 .card{display:block;transition:opacity .4s,transform .4s var(--ease)}
 .card.hide{display:none}
 .card .band{background:var(--tint);border-radius:20px;padding:clamp(18px,2.4vw,30px);position:relative;overflow:hidden;aspect-ratio:5/4;display:flex;align-items:center;justify-content:center}
@@ -337,7 +339,7 @@ h1,h2,h3{text-wrap:balance}
 .card .tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .card .tg span{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px 4px;border-radius:999px;background:var(--sand)}
 .card .go{margin-top:0;flex:none;width:46px;height:46px}
-.card.lead{grid-column:1/-1}
+.card.lead{grid-column:1/-1!important}
 .card.lead .band{aspect-ratio:auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,48px);align-items:center;padding:clamp(22px,3.4vw,52px)}
 .card.lead .band img{aspect-ratio:4/3}
 .card.lead .copy .code{color:var(--accent)}
@@ -410,3 +412,17 @@ h1,h2,h3{text-wrap:balance}
 .card .tg span.ai{padding:3.5px 9px 2.5px;border-width:1.5px}
 .pill.ai::before,.card .tg span.ai::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:1px}
 .pill.ai.none::before,.card .tg span.ai.none::before{background:none;border:1.5px solid currentColor;width:5px;height:5px}
+
+/* round 2: card sizes, hover video, hero video */
+.card h3{font-size:clamp(18px,1.45vw,22px)}
+.card.big h3{font-size:clamp(21px,1.9vw,27px)}
+.card .band{position:relative}
+.card .hv{position:absolute;inset:clamp(18px,2.4vw,30px);width:auto;height:auto;border-radius:12px;object-fit:cover;opacity:0;transition:opacity .5s;pointer-events:none;width:calc(100% - 2*clamp(18px,2.4vw,30px));height:calc(100% - 2*clamp(18px,2.4vw,30px))}
+.card:hover .hv.on{opacity:1}
+@media (hover:none){.card .hv{display:none}}
+@media (max-width:1000px){.card,.card.big{grid-column:span 3}}
+@media (max-width:640px){.card,.card.big{grid-column:span 6}}
+.hero-img{position:relative}
+.vhero video{width:100%;height:100%;object-fit:cover;display:block}
+.vhero:hover .vtoggle{opacity:1}
+.tgroup{margin-bottom:14px}.tgroup small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}

@@ -184,6 +184,14 @@
     });
   });
 
+  /* home: preview video on hover */
+  document.querySelectorAll('.card .hv').forEach(function (v) {
+    var c = v.closest('.card');
+    if (reduce || !window.matchMedia('(hover: hover)').matches) return;
+    c.addEventListener('mouseenter', function () { v.preload = 'auto'; v.currentTime = 0; v.play().then(function () { v.classList.add('on'); }).catch(function () {}); });
+    c.addEventListener('mouseleave', function () { v.classList.remove('on'); v.pause(); });
+  });
+
   /* home: filters */
   var fbtns = document.querySelectorAll('.filters button');
   var cards = document.querySelectorAll('.cards .card');
