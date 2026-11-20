@@ -60,6 +60,12 @@
         if (i === sc) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
       });
       var nav = stepLinks[0].parentNode;
+      if (hdr) {
+        var nr = nav.getBoundingClientRect(), pr = nav.parentNode.getBoundingClientRect();
+        var on = nr.top <= hdr.offsetHeight + 60 && pr.bottom > hdr.offsetHeight + nr.height;
+        hdr.classList.toggle('steps-on', on);
+        document.body.classList.toggle('steps-on-page', on);
+      }
       if (sc > -1 && nav._cur !== sc) {
         nav._cur = sc;
         var a = stepLinks[sc];

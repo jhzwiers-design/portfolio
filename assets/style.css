@@ -426,3 +426,21 @@ h1,h2,h3{text-wrap:balance}
 .vhero video{width:100%;height:100%;object-fit:cover;display:block}
 .vhero:hover .vtoggle{opacity:1}
 .tgroup{margin-bottom:14px}.tgroup small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+
+/* round 3: consistent image sizes */
+.grid .fr .ph,.grid .wide .ph{aspect-ratio:var(--fr);background:var(--sand2)}
+.grid .fr .ph img,.grid .wide .ph img{width:100%;height:100%;object-fit:contain}
+.grid .wide{grid-column:1/-1}
+.grid .fr .vloop,.grid .wide .vloop{aspect-ratio:var(--fr)}
+.dark .grid .fr .ph,.dark .grid .wide .ph{background:#2A2622}
+.car{--ch:min(var(--chd,300px),62vw)}
+.car>.ci{width:calc(var(--ch) * var(--r));max-width:88vw}
+.car .ci .ph{height:var(--ch);background:var(--sand2)}
+.car .ci .ph img{width:100%;height:100%;object-fit:contain}
+.car .ci .vloop{height:var(--ch);aspect-ratio:auto}
+.dark .car .ci .ph{background:#2A2622}
+/* while the step bar is pinned it replaces the header's reading line */
+.hdr.steps-on .prog{opacity:0}
+.prog{transition:opacity .25s}
+@media (max-width:900px){.steps-on-page .toc ol::after{opacity:0}}
+.grid .wide .ph{max-height:560px;margin:0 auto}.grid .wide .ph{width:min(100%,calc(560px * var(--fr)))}
