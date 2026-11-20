@@ -12,6 +12,46 @@
     rvs.forEach(function (el) { io.observe(el); });
   } else { rvs.forEach(function (el) { el.classList.add('in'); }); }
 
+  /* main nav: a sliding pill that follows the current page, Contact when the contact section is in view */
+  var seg = document.querySelector('.seg');
+  if (seg) {
+    var ind = seg.querySelector('.ind'), navLinks = [].slice.call(seg.querySelectorAll('a'));
+    var contactSec = document.getElementById('contact'), current = seg.querySelector('a.on');
+    function place(a) {
+      if (!a) { ind.style.opacity = 0; return; }
+      ind.style.width = a.offsetWidth + 'px';
+      ind.style.transform = 'translateX(' + a.offsetLeft + 'px)';
+      ind.style.opacity = '';
+    }
+    function setOn(a) {
+      navLinks.forEach(function (l) { l.classList.toggle('on', l === a); if (l === a) l.setAttribute('aria-current', 'page'); else l.removeAttribute('aria-current'); });
+      current = a; place(a);
+    }
+    /* coming from another page: start the pill where it was, then slide it over */
+    var prev = null;
+    try { prev = sessionStorage.getItem('jz-nav'); sessionStorage.removeItem('jz-nav'); } catch (e) {}
+    if (prev !== null && navLinks[+prev] && navLinks[+prev] !== current && !reduce) {
+      ind.style.transition = 'none'; place(navLinks[+prev]);
+      void ind.offsetWidth; ind.style.transition = '';
+      requestAnimationFrame(function () { requestAnimationFrame(function () { place(current); }); });
+    } else { place(current); }
+    requestAnimationFrame(function () { seg.classList.add('ready'); });
+    navLinks.forEach(function (l, i) {
+      l.addEventListener('click', function () { try { sessionStorage.setItem('jz-nav', String(navLinks.indexOf(current))); } catch (e) {} place(l); });
+    });
+    window.addEventListener('resize', function () { place(current); });
+    if (contactSec) {
+      var aboutLink = navLinks[1], contactLink = seg.querySelector('[data-contact]');
+      var spy = function () {
+        var want = contactSec.getBoundingClientRect().top < window.innerHeight * 0.6 || window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4 ? contactLink : aboutLink;
+        if (want !== current) setOn(want);
+      };
+      window.addEventListener('scroll', spy, { passive: true }); spy();
+      contactLink.addEventListener('click', function (e) { e.preventDefault(); setOn(contactLink); contactSec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); history.replaceState(null, '', '#contact'); });
+      aboutLink.addEventListener('click', function (e) { e.preventDefault(); setOn(aboutLink); window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); history.replaceState(null, '', location.pathname); });
+    }
+  }
+
   /* header progress + sticky table of contents */
   var hdr = document.querySelector('.hdr');
   var toc = document.querySelector('.toc');
