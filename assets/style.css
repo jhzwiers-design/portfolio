@@ -618,3 +618,100 @@ h1,h2,h3{text-wrap:balance}
 .mtile small{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:3px}
 @media (max-width:760px){.mstrip{display:block}.more-work .index{display:none}.more-head p{font-size:15px}}
 @media (prefers-reduced-motion:reduce){.mstrip .track{animation:none}.mstrip{overflow-x:auto}}
+
+/* ===== Projected light + Archivo (chosen Nov 23) ===== */
+@font-face{font-family:ArchivoV;src:url(fonts/archivo-latin-wdth-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:Michroma;src:url(fonts/michroma-latin-400-normal.woff2) format("woff2");font-display:swap}
+/* C · Lit room: every opening uses the Bloom Fest gradient in its own group colour */
+.hero-case{padding:0!important;max-width:none}
+.hero-band{border-radius:0!important;min-height:auto!important;padding:clamp(32px,5vw,80px) var(--gut)!important;
+  background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--accent) 45%,#0d0b0b) 0%,#0d0b0b 70%)!important;color:var(--cream)}
+.hero-band h1{color:#fff!important}
+.hero-band .client{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
+.hero-band .scrollcue{color:var(--cream)}.hero-band .scrollcue span{background:var(--cream)}
+.hero-band .shape{display:none}
+.hero-band .pill,.hero-band .pill.light{background:rgba(255,255,255,.1)!important;color:#fff!important;border-color:rgba(255,255,255,.4)!important}
+.hero-img{border-radius:6px!important;box-shadow:0 30px 90px color-mix(in srgb,var(--accent) 45%,transparent)!important}
+.hero-img img{border-radius:6px}
+.card .band,.ph,.vplayer,.vloop,.nx .band,.about-teaser,.panel,.chip,.bq,.honest,.clinks a,.pair,.play,.me{border-radius:8px!important}
+.card .band{background:radial-gradient(120% 90% at 50% 0%,color-mix(in srgb,var(--accent) 40%,#141110),#141110 75%)!important}
+.card .band img{border-radius:4px!important;box-shadow:0 20px 50px rgba(0,0,0,.5)!important}
+.pill,.card .tg span,.filters button{border-radius:4px!important}
+.card .tg span{background:none!important;border:1px solid var(--line);font-weight:600}
+.pill i{display:none!important}
+.filters button{border-width:1px!important}
+.seg,.seg a,.seg .ind{border-radius:6px!important}
+.go{border-radius:6px!important}
+.nx .band{background:radial-gradient(120% 90% at 30% 0%,color-mix(in srgb,var(--accent) 40%,#141110),#141110 75%)!important;color:var(--cream)}
+.nx .kicker{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
+.card.lead .band{color:var(--cream)}
+.card.lead h3,.card.lead p,.card.lead .copy{color:#F4EFE6!important}
+.card.lead .kind{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
+.card.lead .tg span{color:#F4EFE6;border-color:rgba(255,255,255,.3)}
+.card.lead .go{border-color:#F4EFE6;color:#F4EFE6}
+/* D · Projected light: the gradient becomes a beam from a projector, with film grain; no bubble labels */
+.hero-band{background:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+  conic-gradient(from 200deg at 0% 0%,transparent 0deg,color-mix(in srgb,var(--accent) 55%,transparent) 22deg,transparent 60deg),
+  radial-gradient(90% 70% at 0% 0%,color-mix(in srgb,var(--accent) 50%,#0b0a0a),#0b0a0a 75%)!important}
+.card .band{background:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+  radial-gradient(100% 80% at 0% 0%,color-mix(in srgb,var(--accent) 45%,#100e0d),#100e0d 78%)!important}
+.hero-band .tags .pill{background:none!important;border:0!important;padding:0!important;font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.75)!important}
+.hero-band .tags .pill+.pill::before{content:"/";margin:0 10px;opacity:.5}
+.hero-band .tags .pill.ai{color:#fff!important}
+.hero-band .tags{gap:0}
+.hero-band .scrollcue{display:none}
+.hero-band h1{letter-spacing:-.055em!important;font-weight:800!important}
+.card .tg span{border:0!important;padding:0!important;font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.card .tg span+span::before{content:"/";margin:0 8px;opacity:.5}
+.card .tg{gap:0}
+.card.lead .tg span{color:rgba(255,255,255,.7)!important}
+.filters button{border:0!important;background:none!important;padding:6px 0!important;margin-right:14px;color:var(--muted)}
+.filters button.on{color:var(--ink)!important;background:none!important;box-shadow:inset 0 -2px 0 var(--ink)}
+.filters{gap:0}
+.hero-img,.card .band img{border-radius:2px!important}
+.card .band,.hero-band{border-radius:0!important}
+
+/* Stretch: Archivo at its widest for headlines, narrowest for labels */
+.home-hero h1,.hero-band h1,.h2,.work-head h2,.more-head h2,.card h3,.nx .t,.about-teaser h2,.end h2,.index a .n,.step h3,h1,h2{font-family:ArchivoV,Helvetica,sans-serif!important;font-stretch:125%!important;font-weight:850!important;letter-spacing:-.045em!important;line-height:.95!important}
+.home-hero h1{font-size:clamp(40px,7.4vw,118px)!important}
+.hero-band h1{font-size:clamp(32px,4vw,64px)!important}
+.index a .n small{font-family:Helvetica,Arial,sans-serif;font-stretch:100%}
+.kicker,.client,.code,.card .code,.index a .c,.card .kind,.tags .pill,.card .tg span,.filters button,.seg a,.steps-nav a b{font-family:ArchivoV,Helvetica,sans-serif!important;font-stretch:100%!important;font-weight:600!important;letter-spacing:.06em!important;font-size:13px}
+.code,.card .code,.index a .c,.hero-band .code{font-family:Michroma,monospace!important;font-size:11px!important;letter-spacing:.02em!important}
+
+
+/* ===== Signal by day, Night after dark (follows the device) ===== */
+:root{--cream:#F3F2EE;--ink:#111111;--red:#FF4A1C;--sand:#E4E2DC;--sand2:#EAE8E2;--line:#D2CFC7;--muted:#5E5B55;--body:#33312D;--panel:#111111;--onpanel:#F3F2EE}
+body{background:var(--cream);color:var(--ink)}
+.hdr{background:color-mix(in srgb,var(--cream) 86%,transparent)}
+@media (max-width:1000px){.toc{background:color-mix(in srgb,var(--cream) 92%,transparent)!important}}
+.steps-nav{background:color-mix(in srgb,var(--cream) 92%,transparent)!important}
+.panel,.about-teaser,.play{background:var(--panel)!important;color:var(--onpanel)!important}
+.status i{background:var(--red);box-shadow:none;animation:none}
+:root[data-theme=dark]{--cream:#0E0D0C;--ink:#EDE9E2;--red:#D7FF3A;--sand:#1E1C1A;--sand2:#191715;--line:#2E2B28;--muted:#9C958B;--body:#C9C3B9;--panel:#1A1816;--onpanel:#EDE9E2;color-scheme:dark}
+:root[data-theme=dark] .pill.solid,:root[data-theme=dark] .step .num span,:root[data-theme=dark] .tbar div{color:#fff}
+:root[data-theme=dark] .ph,:root[data-theme=dark] .grid .fr .ph,:root[data-theme=dark] .grid .wide .ph{background:#1A1816}
+:root[data-theme=dark] .ph .zoom,:root[data-theme=dark] .vtoggle,:root[data-theme=dark] .vplay span{background:rgba(237,233,226,.92);color:#111}
+:root[data-theme=dark] .me{box-shadow:none}
+:root[data-theme=dark] .card .band img,:root[data-theme=dark] .hero-img{box-shadow:0 20px 50px rgba(0,0,0,.6)!important}
+:root[data-theme=dark] .facts div{border-color:#2E2B28}
+/* the switch itself: a slow cross-fade */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.9s;animation-timing-function:ease}
+html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,border-color .9s ease,fill .9s ease!important}
+
+/* ===== plain navigation: words, not a bubble ===== */
+.seg{background:none!important;border:0!important;padding:0!important;gap:22px}
+.seg .ind{display:none!important}
+.seg a{padding:6px 0!important;border-radius:0!important;background:none!important;color:var(--muted)!important}
+.seg a.on{color:var(--ink)!important;box-shadow:inset 0 -2px 0 var(--red)}
+.seg a:hover{color:var(--ink)!important}
+.nx{margin-top:64px}
+/* openings and the next-project band are always lit dark, so their type stays light in both modes */
+.hero-band,.nx .band{color:#F3F2EE!important}
+.hero-band .code{color:rgba(255,255,255,.75)!important}
+.nx .t,.nx .band h2{color:#F3F2EE!important}
+.nx .go{border-color:#F3F2EE!important;color:#F3F2EE!important}
+.nx:hover .go{background:#F3F2EE!important;color:#111!important}
+.card.lead .copy .code{color:color-mix(in srgb,var(--accent) 45%,#fff)!important}

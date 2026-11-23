@@ -281,3 +281,20 @@
     });
   }
 })();
+
+/* follow the device's light/dark setting, and fade between them */
+(function () {
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  if (!mq) return;
+  var root = document.documentElement;
+  function set(dark) { root.setAttribute('data-theme', dark ? 'dark' : 'light'); }
+  set(mq.matches);
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function change(e) {
+    if (reduce) { set(e.matches); return; }
+    if (document.startViewTransition) { document.startViewTransition(function () { set(e.matches); }); return; }
+    root.classList.add('theming'); set(e.matches);
+    setTimeout(function () { root.classList.remove('theming'); }, 1000);
+  }
+  if (mq.addEventListener) mq.addEventListener('change', change); else if (mq.addListener) mq.addListener(change);
+})();
