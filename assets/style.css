@@ -472,3 +472,22 @@ h1,h2,h3{text-wrap:balance}
 .vtoggle{display:grid;place-items:center;color:var(--ink);font-size:13px;padding:0}.vtoggle svg{display:block}
 .card:hover h3{color:var(--accent)}
 .filters button.on:hover{background:var(--ink)}
+
+/* home: four featured tiles, the rest in a list; a filter shows every match as tiles */
+.more-work{margin-top:90px}
+.more-work.gone{display:none}
+.more-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:18px}
+.more-head h2{margin:0;font-size:clamp(28px,3vw,44px);letter-spacing:-.04em}
+.more-head p{margin:0;max-width:46ch;color:var(--muted);font-size:16px;line-height:1.5}
+.more-work .index{margin-top:0}
+.index a{grid-template-columns:80px minmax(0,1.6fr) minmax(0,.8fr) 60px}
+.index a .n small{display:block;font-weight:400;color:var(--muted);font-size:15px;margin-top:4px;letter-spacing:0}
+.index a .th{display:none}
+.card.in{animation:cardin .5s var(--ease) both}
+@keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (hover:none){.index a{grid-template-columns:84px minmax(0,1fr)}.index a .c,.index a .k,.index a .y{display:none}.index a .th{display:block;width:84px;aspect-ratio:4/3;object-fit:cover;border-radius:8px;background:var(--tint)}}
+@media (max-width:700px){.index a{grid-template-columns:72px minmax(0,1fr)}.index a .c,.index a .k,.index a .y{display:none}.index a .th{display:block;width:72px;aspect-ratio:4/3;object-fit:cover;border-radius:8px}}
+/* small players: the play circle alone, so the caption has room */
+.vplayer{container-type:inline-size}
+@container (max-width:620px){.vplay b{display:none}.vplay span{width:64px;height:64px;font-size:20px}.vplayer figcaption{font-size:13px;right:16px;line-height:1.4}}
+@media (max-width:900px){.step{grid-template-columns:minmax(0,1fr)}.step>div{min-width:0}}

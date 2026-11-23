@@ -242,12 +242,22 @@
   /* home: filters */
   var fbtns = document.querySelectorAll('.filters button');
   var cards = document.querySelectorAll('.cards .card');
+  var wh = document.querySelector('[data-h-all]'), more = document.querySelector('.more-work');
+  var NW = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen'];
   function filt(f) {
     fbtns.forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-f') === f); b.setAttribute('aria-pressed', b.getAttribute('data-f') === f); });
+    var n = 0;
     cards.forEach(function (c) {
-      var show = f === 'all' || (' ' + c.getAttribute('data-k') + ' ').indexOf(' ' + f + ' ') > -1;
+      var show = f === 'all' ? !c.hasAttribute('data-more') : (' ' + c.getAttribute('data-k') + ' ').indexOf(' ' + f + ' ') > -1;
       c.classList.toggle('hide', !show);
+      c.classList.remove('in'); if (show) { n++; void c.offsetWidth; c.classList.add('in'); }
     });
+    if (more) more.classList.toggle('gone', f !== 'all');
+    if (wh) {
+      var b = document.querySelector('.filters button[data-f="' + f + '"]');
+      var label = b ? b.firstChild.textContent : '';
+      wh.textContent = f === 'all' ? wh.getAttribute('data-h-all') : label + ': ' + (NW[n] || n).toLowerCase() + (n === 1 ? ' project.' : ' projects.');
+    }
     var first = true;
     cards.forEach(function (c) { c.classList.remove('lead'); });
     cards.forEach(function (c) { if (first && !c.classList.contains('hide') && c.hasAttribute('data-lead')) { c.classList.add('lead'); } if (!c.classList.contains('hide')) first = false; });
