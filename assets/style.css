@@ -608,3 +608,13 @@ h1,h2,h3{text-wrap:balance}
 .grid .wide .vcap,.grid .wide .cap{max-width:min(100%,calc(560px * var(--fr)))}
 .step .grid .wide .ph,.step .grid .wide .vloop{max-height:440px;width:min(100%,calc(440px * var(--fr)))}
 .step .grid .wide .vcap,.step .grid .wide .cap{max-width:min(100%,calc(440px * var(--fr)))}
+/* phones: the other projects move past as a strip, since there is no hover preview */
+.mstrip{display:none;margin:4px calc(var(--gut) * -1) 0;mask-image:none;-webkit-mask-image:none}
+.mstrip .track{gap:0;animation:mq 46s linear infinite}
+.mstrip:active .track,.mstrip:focus-within .track{animation-play-state:paused}
+.mtile{flex:none;margin-right:12px;width:68vw;max-width:300px;border-radius:16px;overflow:hidden;background:var(--tint);display:block}
+.mtile img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.mtile span{display:block;padding:10px 14px 12px;font-weight:700;font-size:16px;letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
+.mtile small{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:3px}
+@media (max-width:760px){.mstrip{display:block}.more-work .index{display:none}.more-head p{font-size:15px}}
+@media (prefers-reduced-motion:reduce){.mstrip .track{animation:none}.mstrip{overflow-x:auto}}
