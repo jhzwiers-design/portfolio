@@ -465,12 +465,10 @@ h1,h2,h3{text-wrap:balance}
 .card.lead h3{font-size:clamp(34px,4vw,60px)}
 /* colour groups */
 .filters button{display:inline-flex;align-items:center;gap:7px}
-.filters button i{width:9px;height:9px;border-radius:50%;background:var(--gc)}
-.filters button.on{background:var(--gc);border-color:var(--gc);color:var(--cream)}
-.filters button.on i{background:var(--cream)}
 .gtag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gc);margin-left:8px;vertical-align:1px}
 .gtag i{width:8px;height:8px;border-radius:50%;background:var(--gc)}
 .card.lead .gtag{margin:10px 0 0;display:flex}
 .index .gtag{margin-left:0}
 .vtoggle{display:grid;place-items:center;color:var(--ink);font-size:13px;padding:0}.vtoggle svg{display:block}
 .card:hover h3{color:var(--accent)}
+.filters button.on:hover{background:var(--ink)}
