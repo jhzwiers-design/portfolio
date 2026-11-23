@@ -298,3 +298,19 @@
   }
   if (mq.addEventListener) mq.addEventListener('change', change); else if (mq.addListener) mq.addListener(change);
 })();
+
+/* pause buttons for the moving strips */
+(function () {
+  var PLAY = '<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>';
+  document.querySelectorAll('.mq-toggle').forEach(function (b) {
+    var w = b.closest('.mq-wrap'), what = b.getAttribute('aria-label').replace('Pause ', '');
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var p = w.classList.toggle('paused');
+      b.innerHTML = p ? PLAY : PAUSE;
+      b.setAttribute('aria-pressed', p ? 'true' : 'false');
+      b.setAttribute('aria-label', (p ? 'Play ' : 'Pause ') + what);
+    });
+  });
+})();

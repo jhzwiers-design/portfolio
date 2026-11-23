@@ -717,3 +717,30 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 .card.lead .copy .code{color:color-mix(in srgb,var(--accent) 45%,#fff)!important}
 .decision{margin:22px 0 0;max-width:46ch;font-size:clamp(16px,1.35vw,19px);line-height:1.45;color:rgba(243,242,238,.86);border-left:2px solid var(--red);padding-left:14px;animation:fade .8s .5s both}
 .decision b{display:block;font-family:ArchivoV,Helvetica,sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--accent) 35%,#fff);margin-bottom:6px}
+
+/* ===== accessibility pass (Nov 23) ===== */
+:root{--redtext:#B8300B}
+:root[data-theme=dark]{--redtext:#D7FF3A}
+.kicker[style*="--red"],.clinks small,.todo{color:var(--redtext)!important}
+.steps-nav a b,.steps-nav a span{color:var(--muted)!important}
+.steps-nav a.on b{color:var(--ink)!important}
+/* project colour as small text: darker by day, lighter by night */
+.kicker[style*="--accent"],.chip b,.card .kind,.card.lead .kind{color:color-mix(in srgb,var(--accent) 72%,#000)!important}
+.pill.solid,.step .num span,.tbar div{background:color-mix(in srgb,var(--accent) 80%,#000)!important;color:#fff!important}
+:root[data-theme=dark] .step .num,:root[data-theme=dark] .kicker[style*="--accent"],:root[data-theme=dark] .chip b,:root[data-theme=dark] .card .kind{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
+.card.lead .kind{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
+.step .num{color:color-mix(in srgb,var(--accent) 80%,#000)}
+:root[data-theme=dark] .honest{background:color-mix(in srgb,var(--tint) 14%,#141210)!important}
+/* pause buttons for anything that keeps moving */
+.mq-wrap{position:relative}
+.mq-toggle{position:absolute;right:var(--gut);bottom:6px;z-index:2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);background:var(--cream);color:var(--ink);display:grid;place-items:center;font-size:12px;cursor:pointer}
+.mq-strip .mq-toggle{display:none}
+@media (max-width:760px){.mq-strip .mq-toggle{display:grid;top:-46px;bottom:auto}}
+.mq-wrap.paused .track{animation-play-state:paused!important}
+.honest .kicker{color:#9A2808!important}
+:root[data-theme=dark] .honest .kicker{color:var(--redtext)!important}
+.chip[style] b{color:#fff!important}
+.toc a small{color:var(--muted)!important}
+.chip[style] b,:root[data-theme=dark] .chip[style] b,.chip[style] span{color:inherit!important;opacity:1!important}
+.mtile span{color:#111!important}.mtile small{color:#4A4741!important}
+@media (max-width:760px){.mq-strip{padding-bottom:44px}.mq-strip .mq-toggle{top:auto;bottom:0}}
