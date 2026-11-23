@@ -211,12 +211,13 @@
     }, { threshold: 0.35 });
     loops.forEach(function (v) { vio.observe(v); });
   }
+  var PLAY = '<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>', PAUSE = '<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg>';
   loops.forEach(function (v) {
     var t = v.parentNode.querySelector('.vtoggle');
-    if (reduce) { v._paused = true; t.textContent = '▶'; t.setAttribute('aria-label', 'Play'); }
+    if (reduce) { v._paused = true; t.innerHTML = PLAY; t.setAttribute('aria-label', 'Play'); }
     t.addEventListener('click', function () {
-      if (v.paused) { v._paused = false; v.play(); t.textContent = '❚❚'; t.setAttribute('aria-label', 'Pause'); }
-      else { v._paused = true; v.pause(); t.textContent = '▶'; t.setAttribute('aria-label', 'Play'); }
+      if (v.paused) { v._paused = false; v.play(); t.innerHTML = PAUSE; t.setAttribute('aria-label', 'Pause'); }
+      else { v._paused = true; v.pause(); t.innerHTML = PLAY; t.setAttribute('aria-label', 'Play'); }
     });
   });
 
