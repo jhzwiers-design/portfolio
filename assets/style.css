@@ -553,13 +553,7 @@ h1,h2,h3{text-wrap:balance}
   .hero-wall{height:78svh}
 }
 
-/* page voice per kind of work */
-.L-cinema .panel{background:#0d0b0b}
-.L-cinema #work .vplayer{border-radius:6px}
-.L-book .case main .txt{font-size:17.5px;line-height:1.65}
-.L-book .case main .h2{letter-spacing:-.035em}
-.L-print .grid .ph img{background:#fff}
-.L-wall .panel{background:#111}
+
 /* fit the hung pieces in the first screen */
 .hero-print h1,.hero-data h1,.hero-book h1{font-size:clamp(34px,3.7vw,62px)}
 .hero-print .scrollcue,.hero-data .scrollcue,.hero-book .scrollcue{margin-top:22px}
@@ -570,3 +564,6 @@ h1,h2,h3{text-wrap:balance}
 .hero-data .hp-v{aspect-ratio:var(--ratio)}
 @media (max-width:760px){.hp img,.hp-v,.hero-data .hp img,.hero-data .hp-v,.hero-book .hp img,.hb-pieces.n2 .hp img{height:auto;width:100%}.hero-data .hb-pieces{display:grid}}
 .hp-v{position:relative}.hp-v:hover .vtoggle{opacity:1}
+
+.hero-mob{display:none}
+@media (max-width:760px){.hero-desk{display:none}.hero-mob{display:block}}
