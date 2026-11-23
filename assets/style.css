@@ -567,3 +567,44 @@ h1,h2,h3{text-wrap:balance}
 
 .hero-mob{display:none}
 @media (max-width:760px){.hero-desk{display:none}.hero-mob{display:block}}
+
+/* ===== tighter rhythm: less empty space between things ===== */
+.case section{padding-top:76px}
+@media (max-width:1000px){.case section{padding-top:56px}}
+.sec-head{margin:12px 0 20px}
+.label{margin:26px 0 12px}
+.step{padding:32px 0;gap:20px 32px}
+.steps-nav{margin:4px -14px 4px}
+.hero-case{padding-top:12px}
+.hero-band{min-height:min(calc(100svh - 96px),760px)}
+.end{margin-top:84px;padding:24px 0 26px}
+.nx .band{gap:24px}
+.ftr{padding:36px 0 32px}
+.work-head{padding-top:56px;margin-bottom:22px}
+.cards{gap:28px 20px}
+.more-work{margin-top:64px}
+.about-teaser{margin-top:72px}
+.cta{padding:72px 0 12px}
+.home-hero{padding-bottom:0}
+.cols{padding-top:48px}
+.honest{margin-top:48px}
+.brief{margin-top:36px}
+.grid{gap:12px}
+.car{gap:12px}
+/* Bloom Fest keeps the screening-room opening on computers, tighter */
+.hero-cine{padding:clamp(32px,4.5vw,64px) 0 clamp(28px,3.5vw,48px)}
+.hc-frame{margin-top:clamp(22px,3vw,40px)}
+.hero-cine .wrap{max-width:min(var(--max),1240px)}
+.hero-cine .scrollcue{margin-top:24px}
+/* tiles stretch to fill the row instead of leaving an empty column */
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--min,220px)),1fr))}
+.grid .fr .ph,.grid .fr .vloop{max-height:70vh;width:min(100%,calc(70vh * var(--fr)));margin-inline:auto}
+.grid .wide .ph,.grid .wide .vloop{max-height:640px;width:min(100%,calc(640px * var(--fr)));margin-inline:auto}
+.grid .wide .vcap,.grid .wide .cap{max-width:min(100%,calc(640px * var(--fr)));margin-inline:auto}
+/* small sets get exactly as many columns as they have pieces */
+.grid[style*="--cols"]{grid-template-columns:repeat(var(--cols),minmax(0,1fr))}
+@media (max-width:760px){.grid[style*="--cols"]{grid-template-columns:repeat(var(--mcols),minmax(0,1fr))}}
+.grid .wide .ph,.grid .wide .vloop{max-height:560px;width:min(100%,calc(560px * var(--fr)))}
+.grid .wide .vcap,.grid .wide .cap{max-width:min(100%,calc(560px * var(--fr)))}
+.step .grid .wide .ph,.step .grid .wide .vloop{max-height:440px;width:min(100%,calc(440px * var(--fr)))}
+.step .grid .wide .vcap,.step .grid .wide .cap{max-width:min(100%,calc(440px * var(--fr)))}
