@@ -715,3 +715,5 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 .nx .go{border-color:#F3F2EE!important;color:#F3F2EE!important}
 .nx:hover .go{background:#F3F2EE!important;color:#111!important}
 .card.lead .copy .code{color:color-mix(in srgb,var(--accent) 45%,#fff)!important}
+.decision{margin:22px 0 0;max-width:46ch;font-size:clamp(16px,1.35vw,19px);line-height:1.45;color:rgba(243,242,238,.86);border-left:2px solid var(--red);padding-left:14px;animation:fade .8s .5s both}
+.decision b{display:block;font-family:ArchivoV,Helvetica,sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--accent) 35%,#fff);margin-bottom:6px}
