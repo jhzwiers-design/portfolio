@@ -319,7 +319,7 @@
    with a no-break space. If a glued pair is ever too wide for its line (very large
    headings on a very narrow screen), loosen that one join so nothing is cut off. */
 (function () {
-  var SEL = 'h1,h2,h3,h4,p,li,figcaption,blockquote,dd,dt,td,th,.cap,.lede';
+  var SEL = 'p,li,figcaption,blockquote,dd,dt,td,th,.cap,.lede,div,span,a,small,b';
   var NB = ' ';
   function lastGlue(el) {
     var tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, hit = null;
@@ -341,7 +341,7 @@
     loosened.forEach(function (x) { x.node.data = x.data; });
     loosened = [];
     document.querySelectorAll(SEL).forEach(function (el) {
-      if (!el.offsetParent || el.querySelector(SEL)) return;
+      if (!el.offsetParent || el.querySelector('p,div,li,h1,h2,h3,h4')) return;
       var n = lastGlue(el);
       if (!n || !overflows(el)) return;
       var d = n.data, i = d.lastIndexOf(NB);

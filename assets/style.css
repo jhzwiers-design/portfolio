@@ -376,7 +376,8 @@ h1,h2,h3{text-wrap:balance}
 .about-teaser p{font-size:18px;line-height:1.6;color:#D9D2C6;margin:18px 0 0;max-width:52ch}
 .about-teaser .btn{display:inline-flex;gap:10px;align-items:center;margin-top:24px;border:1.5px solid var(--cream);border-radius:999px;padding:12px 20px 11px;font-weight:700;font-size:14px;transition:background .3s,color .3s}
 .about-teaser .btn:hover{background:var(--cream);color:var(--ink)}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.facts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:420px){.facts{grid-template-columns:minmax(0,1fr)}}
 .facts div{border:1px solid #3A3530;border-radius:16px;padding:18px}
 .facts b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#E9C9A9}
 .facts span{display:block;margin-top:8px;font-size:16px;line-height:1.35}
@@ -797,3 +798,15 @@ h1,h2,h3,h4{text-wrap:balance}
 .work-head h2{font-size:clamp(28px,3vw,44px)!important}
 .work-head .yrs{margin-top:8px;font-size:14px;color:var(--muted);letter-spacing:.02em}
 .pair p.note{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink);max-width:40ch}
+
+/* about: tools as one horizontal row under the three columns */
+.cols .toolrow{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;margin-top:8px}
+.toolrow .tgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px 40px}
+.toolrow .tgroup{margin-bottom:0}
+@media (min-width:900px){.cols{grid-template-columns:repeat(3,minmax(0,1fr))}.toolrow .tgroups{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* rows of mixed-shape images at one height */
+.arow{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.arow .ph,.arow figure{margin:0}
+.arow img{width:100%;height:auto;display:block}
+@media (max-width:640px){.arow{flex-direction:column}.arow>div{flex:none!important;width:100%}}
