@@ -744,3 +744,37 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 .chip[style] b,:root[data-theme=dark] .chip[style] b,.chip[style] span{color:inherit!important;opacity:1!important}
 .mtile span{color:#111!important}.mtile small{color:#4A4741!important}
 @media (max-width:760px){.mq-strip{padding-bottom:44px}.mq-strip .mq-toggle{top:auto;bottom:0}}
+
+/* ===== two kinds of light: screen work in a dark room, print work on paper in daylight ===== */
+.hero-band.paper,.card.paper .band,.nx .band.paper{
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .05  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+  radial-gradient(110% 90% at 0% 0%,var(--tint),color-mix(in srgb,var(--tint) 30%,#F3F2EE) 55%,#F3F2EE 85%)!important;
+  color:#111!important}
+.hero-band.paper h1,.nx .band.paper .t{color:#111!important}
+.hero-band.paper .client{color:color-mix(in srgb,var(--accent) 75%,#000)!important}
+.hero-band.paper .code{color:#4A4741!important}
+.hero-band.paper .tags .pill,.hero-band.paper .tags .pill.light{color:#33312D!important}
+.hero-band.paper .tags .pill.ai{color:#111!important}
+.hero-band.paper .decision{color:#33312D}
+.hero-band.paper .decision b{color:color-mix(in srgb,var(--accent) 75%,#000)}
+.hero-band.paper .decision{border-left-color:var(--accent)}
+.hero-band.paper .hero-img{box-shadow:0 24px 60px rgba(40,30,20,.22)!important}
+.card.paper .band img{box-shadow:0 18px 40px rgba(40,30,20,.22)!important}
+.nx .band.paper .kicker{color:color-mix(in srgb,var(--accent) 75%,#000)!important}
+.nx .band.paper .go{border-color:#111!important;color:#111!important}
+.nx:hover .band.paper .go{background:#111!important;color:#F3F2EE!important}
+.card.lead.paper .band{color:#111}
+.card.lead.paper h3,.card.lead.paper p,.card.lead.paper .copy{color:#111!important}
+.card.lead.paper .kind{color:color-mix(in srgb,var(--accent) 72%,#000)!important}
+.card.lead.paper .tg span{color:#4A4741!important;border-color:rgba(0,0,0,.2)}
+.card.lead.paper .go{border-color:#111;color:#111}
+.card.lead.paper .copy .code{color:#4A4741!important}
+/* after dark, the paper is lamplit: warm, dim, still clearly paper */
+:root[data-theme=dark] .hero-band.paper,:root[data-theme=dark] .card.paper .band,:root[data-theme=dark] .nx .band.paper{
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+  radial-gradient(110% 90% at 0% 0%,color-mix(in srgb,var(--tint) 46%,#24211e),#24211e 60%,#1c1a18 90%)!important;color:#EDE9E2!important}
+:root[data-theme=dark] .hero-band.paper h1,:root[data-theme=dark] .nx .band.paper .t,:root[data-theme=dark] .card.lead.paper h3,:root[data-theme=dark] .card.lead.paper p,:root[data-theme=dark] .card.lead.paper .copy{color:#EDE9E2!important}
+:root[data-theme=dark] .hero-band.paper .client,:root[data-theme=dark] .hero-band.paper .decision b,:root[data-theme=dark] .nx .band.paper .kicker,:root[data-theme=dark] .card.lead.paper .kind{color:color-mix(in srgb,var(--tint) 70%,#fff)!important}
+:root[data-theme=dark] .hero-band.paper .code,:root[data-theme=dark] .hero-band.paper .tags .pill,:root[data-theme=dark] .hero-band.paper .decision,:root[data-theme=dark] .card.lead.paper .tg span,:root[data-theme=dark] .card.lead.paper .copy .code{color:#C9C3B9!important}
+:root[data-theme=dark] .hero-band.paper .tags .pill.ai{color:#EDE9E2!important}
+:root[data-theme=dark] .nx .band.paper .go,:root[data-theme=dark] .card.lead.paper .go{border-color:#EDE9E2!important;color:#EDE9E2!important}
