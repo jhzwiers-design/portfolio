@@ -81,7 +81,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* ---------- galleries ---------- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--min,220px)),1fr));gap:14px;align-items:start}
-.masonry{columns:4 220px;column-gap:14px}.masonry>*{break-inside:avoid;margin-bottom:14px}
+.masonry{columns:4 150px;column-gap:14px}.masonry>*{break-inside:avoid;margin-bottom:14px}
 .car-wrap{position:relative}
 .car{scroll-snap-type:x mandatory;overflow-x:auto;scrollbar-width:none;display:flex;gap:14px;padding:4px 0 6px;overscroll-behavior-x:contain}
 .car::-webkit-scrollbar{display:none}
@@ -845,3 +845,10 @@ h1,h2,h3,h4{text-wrap:balance}
 .arow .ph,.arow figure{margin:0}
 .arow img{width:100%;height:auto;display:block}
 @media (max-width:640px){.arow{flex-direction:column}.arow>div{flex:none!important;width:100%}}
+
+/* short-page stories: three ads up close, side by side */
+.stories{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;margin-top:8px}
+.story h3{margin:14px 0 2px;font-size:1.15rem}
+.story .sub{margin:0 0 8px;color:var(--muted,#666);font-size:.9rem}
+.story .txt{margin:0;max-width:none}
+.story .full-link{margin-top:12px}
