@@ -778,3 +778,6 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 :root[data-theme=dark] .hero-band.paper .code,:root[data-theme=dark] .hero-band.paper .tags .pill,:root[data-theme=dark] .hero-band.paper .decision,:root[data-theme=dark] .card.lead.paper .tg span,:root[data-theme=dark] .card.lead.paper .copy .code{color:#C9C3B9!important}
 :root[data-theme=dark] .hero-band.paper .tags .pill.ai{color:#EDE9E2!important}
 :root[data-theme=dark] .nx .band.paper .go,:root[data-theme=dark] .card.lead.paper .go{border-color:#EDE9E2!important;color:#EDE9E2!important}
+.full-link{margin:18px 0 0}
+.full-link a{font-weight:700;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px;color:var(--ink)}
+.full-link a:hover{color:var(--redtext)}
