@@ -14,7 +14,7 @@ The easiest way is GitHub Desktop:
 1. File → New repository (for example `portfolio`), then copy everything in this folder into it.
 2. Commit to `main`, then Publish repository (untick "Keep this code private").
 3. On github.com, open the repo → Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save.
-4. After a minute the site is live at `https://jhzwiers-design.github.io/portfolio/`.
+4. After a minute the site is live at `https://johnzwiers.com/` (custom domain, set by the CNAME file).
 
 Uploading in the browser instead? GitHub's web uploader takes 100 files at a time, so upload in batches:
 1. `index.html`, `about.html`, `README.md`, `.nojekyll`, `assets/`, `work/`
