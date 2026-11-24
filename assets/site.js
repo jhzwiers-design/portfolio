@@ -314,3 +314,100 @@
     });
   });
 })();
+
+/* No one-word last lines: the build glues the last two words of every text block
+   with a no-break space. If a glued pair is ever too wide for its line (very large
+   headings on a very narrow screen), loosen that one join so nothing is cut off. */
+(function () {
+  var SEL = 'h1,h2,h3,h4,p,li,figcaption,blockquote,dd,dt,td,th,.cap,.lede';
+  var NB = ' ';
+  function lastGlue(el) {
+    var tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, hit = null;
+    while ((n = tw.nextNode())) if (n.data.indexOf(NB) > -1) hit = n;
+    return hit;
+  }
+  function overflows(el) {
+    var box = el.getBoundingClientRect(), lim = box.right + 1;
+    var tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, r = document.createRange();
+    while ((n = tw.nextNode())) {
+      r.selectNodeContents(n);
+      var rs = r.getClientRects();
+      for (var i = 0; i < rs.length; i++) if (rs[i].right > lim) return true;
+    }
+    return false;
+  }
+  var loosened = [];
+  function run() {
+    loosened.forEach(function (x) { x.node.data = x.data; });
+    loosened = [];
+    document.querySelectorAll(SEL).forEach(function (el) {
+      if (!el.offsetParent || el.querySelector(SEL)) return;
+      var n = lastGlue(el);
+      if (!n || !overflows(el)) return;
+      var d = n.data, i = d.lastIndexOf(NB);
+      loosened.push({ node: n, data: d });
+      n.data = d.slice(0, i) + ' ' + d.slice(i + 1);
+    });
+  }
+  var t;
+  function soon() { clearTimeout(t); t = setTimeout(run, 120); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else window.addEventListener('load', run);
+  window.addEventListener('resize', soon);
+})();
+
+/* Headings and short labels: glue their last two words only where the pair fits
+   on one line, measured on this screen, so a big heading never runs off the edge. */
+(function () {
+  var SEL = 'h1,h2,h3,h4,.h2,.h3,.steps-nav a b,.nx .t';
+  var NB = ' ', glued = [];
+  function texts(el) {
+    var a = [], tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
+    while ((n = tw.nextNode())) a.push(n);
+    return a;
+  }
+  function lastJoin(el) {
+    var ts = texts(el), sawWord = false, wordEnd = null;
+    for (var t = ts.length - 1; t >= 0; t--) {
+      var d = ts[t].data;
+      for (var i = d.length - 1; i >= 0; i--) {
+        var c = d[i];
+        if (c === NB) { if (sawWord) return null; continue; }
+        if (/\s/.test(c)) { if (sawWord) return { node: ts[t], i: i, end: wordEnd }; continue; }
+        if (!sawWord) { sawWord = true; wordEnd = { node: ts[t], i: i + 1 }; }
+      }
+    }
+    return null;
+  }
+  function pairWidth(j) {
+    // start of the word before the space
+    var n = j.node, k = j.i - 1, d = n.data;
+    while (k > 0 && !/\s/.test(d[k - 1])) k--;
+    var r = document.createRange();
+    r.setStart(n, Math.max(k, 0)); r.setEnd(j.end.node, j.end.i);
+    var rs = r.getClientRects(), w = 0, top = null, same = true;
+    for (var x = 0; x < rs.length; x++) { if (!rs[x].width) continue; w += rs[x].width; if (top === null) top = rs[x].top; else if (Math.abs(rs[x].top - top) > 4) same = false; }
+    if (same) { var b = r.getBoundingClientRect(); w = b.width; }
+    return w;
+  }
+  function room(el) {
+    var cs = getComputedStyle(el);
+    return el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  }
+  function run() {
+    glued.forEach(function (g) { g.node.data = g.node.data.slice(0, g.i) + ' ' + g.node.data.slice(g.i + 1); });
+    glued = [];
+    var todo = [];
+    document.querySelectorAll(SEL).forEach(function (el) {
+      if (!el.offsetParent || el.querySelector('p,div,li')) return;
+      var j = lastJoin(el);
+      if (j && pairWidth(j) <= room(el) - 2) todo.push(j);
+    });
+    todo.forEach(function (j) {
+      var d = j.node.data; j.node.data = d.slice(0, j.i) + NB + d.slice(j.i + 1); glued.push(j);
+    });
+  }
+  var t, w0 = window.innerWidth;
+  function soon() { if (window.innerWidth === w0) return; w0 = window.innerWidth; clearTimeout(t); t = setTimeout(run, 150); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else window.addEventListener('load', run);
+  window.addEventListener('resize', soon);
+})();

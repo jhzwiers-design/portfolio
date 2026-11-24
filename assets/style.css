@@ -307,7 +307,7 @@ h1,h2,h3{text-wrap:balance}
 .status{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted);animation:fade .8s both}
 .status i{width:9px;height:9px;border-radius:50%;background:#3E8E5B;box-shadow:0 0 0 0 rgba(62,142,91,.5);animation:ping 2.2s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 10px rgba(62,142,91,0)}100%{box-shadow:0 0 0 0 rgba(62,142,91,0)}}
-.home-hero h1{margin:22px 0 0;font-size:clamp(46px,8.4vw,136px);font-weight:700;letter-spacing:-.055em;line-height:.95}
+.home-hero h1{margin:22px 0 0;font-size:min(clamp(46px,8.4vw,136px),calc((100vw - 34px) / 9.6));font-weight:700;letter-spacing:-.055em;line-height:.95}
 .home-hero h1 em{font-style:normal;color:var(--red)}
 .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;animation:fade .8s .7s both}
 .skills a{transition:transform .3s var(--ease),background .3s,color .3s}
@@ -675,7 +675,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* Stretch: Archivo at its widest for headlines, narrowest for labels */
 .home-hero h1,.hero-band h1,.h2,.work-head h2,.more-head h2,.card h3,.nx .t,.about-teaser h2,.end h2,.index a .n,.step h3,h1,h2{font-family:ArchivoV,Helvetica,sans-serif!important;font-stretch:125%!important;font-weight:850!important;letter-spacing:-.045em!important;line-height:.95!important}
-.home-hero h1{font-size:clamp(40px,7.4vw,118px)!important}
+.home-hero h1{font-size:min(clamp(40px,7.4vw,118px),calc((100vw - 34px) / 10.9))!important}
 .hero-band h1{font-size:clamp(32px,4vw,64px)!important}
 .index a .n small{font-family:Helvetica,Arial,sans-serif;font-stretch:100%}
 .kicker,.client,.code,.card .code,.index a .c,.card .kind,.tags .pill,.card .tg span,.filters button,.seg a,.steps-nav a b{font-family:ArchivoV,Helvetica,sans-serif!important;font-stretch:100%!important;font-weight:600!important;letter-spacing:.06em!important;font-size:13px}
@@ -788,3 +788,12 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 .ver-switch a.on{opacity:1;border-bottom-color:var(--red)}
 .hero-band.paper .ver-switch a.on{border-bottom-color:var(--accent)}
 .ver-switch span{opacity:.5}
+
+/* no one-word last lines: the generator glues the last two words of every block; this refines the rag */
+p,li,figcaption,blockquote,dd,dt,td,th,label,.cap,.caption,.lede,.txt,.decision{text-wrap:pretty}
+h1,h2,h3,h4{text-wrap:balance}
+
+/* home: one modest section heading instead of kicker + big line */
+.work-head h2{font-size:clamp(28px,3vw,44px)!important}
+.work-head .yrs{margin-top:8px;font-size:14px;color:var(--muted);letter-spacing:.02em}
+.pair p.note{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink);max-width:40ch}
