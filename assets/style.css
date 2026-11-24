@@ -210,14 +210,45 @@ h1,h2,h3{text-wrap:balance}
 .chip span{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;margin-top:8px;line-height:1.2}
 .chip small{display:block;font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
 
-/* timeline bar (trailer) */
-.tbar{display:flex;gap:3px;margin-top:20px}
-.tbar div{background:var(--accent);color:var(--cream);border-radius:6px;padding:10px 8px;font-size:12px;line-height:1.25;min-width:0;overflow:hidden;transition:transform .3s,background .3s}
-.tbar div:nth-child(even){background:var(--deep)}
-.tbar div:hover{transform:translateY(-4px)}
-.tbar b{display:block;font-size:14px}
-.tbar-ax{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
-@media (max-width:700px){.tbar{flex-direction:column}.tbar div{flex:none!important}}
+/* timeline bar (trailer): proportional scenes; hover shows the frame, click plays from there */
+.tbar{display:flex;gap:3px;margin-top:20px;position:relative}
+.tbar .tseg{position:relative;display:block;text-align:left;font:inherit;border:0;cursor:pointer;background:var(--accent);color:var(--cream);border-radius:6px;padding:10px 8px;font-size:12px;line-height:1.25;min-width:0;transition:transform .3s,background .3s}
+.tbar .tseg:nth-child(even){background:var(--deep)}
+.tbar .tseg:hover,.tbar .tseg:focus-visible{transform:translateY(-4px)}
+.tbar .tseg:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tb-txt{display:block;overflow:hidden}
+.tb-txt b{display:block;font-size:14px}
+.tb-d,.tb-n{display:block}
+.tb-len{display:none}
+.tb-pop{position:absolute;bottom:calc(100% + 12px);left:50%;width:min(300px,40vw);opacity:0;transform:translate(-50%,8px);pointer-events:none;transition:opacity .25s,transform .25s;z-index:6;
+  background:#111;border-radius:10px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.tb-img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.tb-cap{display:block;padding:8px 10px;font-size:12px;color:#F3F2EE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbar .tseg.first .tb-pop{left:0;transform:translate(0,8px)}
+.tbar .tseg.last .tb-pop{left:auto;right:0;transform:translate(0,8px)}
+.tbar .tseg.narrow .tb-d,.tbar .tseg.narrow .tb-n{visibility:hidden}
+@media (hover:hover) and (min-width:701px){
+  .tbar .tseg:hover .tb-pop,.tbar .tseg:focus-visible .tb-pop{opacity:1;transform:translate(-50%,0)}
+  .tbar .tseg.first:hover .tb-pop,.tbar .tseg.first:focus-visible .tb-pop,.tbar .tseg.last:hover .tb-pop,.tbar .tseg.last:focus-visible .tb-pop{transform:none}
+}
+.tbar-ax{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted);margin-top:8px}
+@media (hover:none),(max-width:700px){.tb-hint{display:none}}
+/* phones: a list, each scene with its frame and a bar for its length */
+@media (max-width:700px){
+  .tbar{flex-direction:column;gap:8px}
+  .tbar .tseg{flex:none!important;display:grid;grid-template-columns:116px minmax(0,1fr);gap:12px;align-items:center;padding:8px;border-radius:10px}
+  .tbar .tseg:hover,.tbar .tseg:focus-visible{transform:none}
+  .tb-pop{position:static;opacity:1;transform:none!important;width:116px;box-shadow:none;border-radius:6px;pointer-events:auto}
+  .tb-cap{display:none}
+  .tbar .tseg.narrow .tb-d,.tbar .tseg.narrow .tb-n{visibility:visible}
+  .tb-txt{display:grid;grid-template-columns:auto 1fr auto;column-gap:8px;align-items:baseline;font-size:14px}
+  .tb-txt b{font-size:13px;opacity:.75}
+  .tb-n{grid-column:2;grid-row:1;font-weight:600}
+  .tb-d{grid-column:3;grid-row:1;opacity:.85}
+  .tb-len{display:block;grid-column:2;height:4px;border-radius:2px;background:rgba(255,255,255,.22);position:relative;margin-top:-4px}
+  .tb-len::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cream);border-radius:2px}
+  .tbar-ax{display:none}
+}
 
 /* play / link cards */
 .play{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;align-items:center;background:var(--ink);color:var(--cream);border-radius:22px;padding:18px}

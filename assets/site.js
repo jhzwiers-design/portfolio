@@ -411,3 +411,18 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else window.addEventListener('load', run);
   window.addEventListener('resize', soon);
 })();
+
+/* trailer scene bar: click a scene to play the trailer from there */
+(function () {
+  var bar = document.querySelector('[data-tbar]'); if (!bar) return;
+  var f = document.querySelector('.vplayer'); if (!f) return;
+  var v = f.querySelector('video');
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest('.tseg'); if (!b) return;
+    var t = parseFloat(b.getAttribute('data-t')) || 0;
+    v.controls = true; f.classList.add('playing');
+    var go = function () { try { v.currentTime = t; } catch (x) {} v.play().catch(function () {}); };
+    if (v.readyState >= 1) go(); else { v.preload = 'auto'; v.addEventListener('loadedmetadata', go, { once: true }); v.load(); }
+    f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+  });
+})();
