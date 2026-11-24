@@ -426,3 +426,21 @@
     f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   });
 })();
+
+/* trailer scene bar: the preview screen follows the hovered or focused scene */
+(function () {
+  var bar = document.querySelector('[data-tbar]'), sc = document.querySelector('.tb-screen'); if (!bar || !sc) return;
+  var im = sc.querySelector('img'), cap = sc.querySelector('figcaption'), hint = cap.textContent, on = null;
+  function show(b) {
+    if (on) on.classList.remove('on'); on = b;
+    if (!b) { cap.textContent = hint; return; }
+    b.classList.add('on');
+    var i = b.querySelector('.tb-img'), c = b.querySelector('.tb-cap');
+    if (i) im.src = i.currentSrc || i.src;
+    if (c) cap.textContent = c.textContent;
+  }
+  bar.addEventListener('mouseover', function (e) { var b = e.target.closest('.tseg'); if (b && b !== on) show(b); });
+  bar.addEventListener('focusin', function (e) { var b = e.target.closest('.tseg'); if (b) show(b); });
+  bar.addEventListener('mouseleave', function () { show(null); });
+  bar.querySelectorAll('.tb-img').forEach(function (i) { i.loading = 'eager'; });
+})();
