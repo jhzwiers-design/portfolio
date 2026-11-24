@@ -262,7 +262,15 @@
     cards.forEach(function (c) { c.classList.remove('lead'); });
     cards.forEach(function (c) { if (first && !c.classList.contains('hide') && c.hasAttribute('data-lead')) { c.classList.add('lead'); } if (!c.classList.contains('hide')) first = false; });
   }
-  fbtns.forEach(function (b) { b.addEventListener('click', function () { filt(b.getAttribute('data-f')); }); });
+  function setHash(f) { try { history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f); } catch (e) {} }
+  fbtns.forEach(function (b) { b.addEventListener('click', function () { var f = b.getAttribute('data-f'); filt(f); setHash(f); }); });
+  /* a link like johnzwiers.com/#print opens with that filter on */
+  var h0 = (location.hash || '').slice(1);
+  if (h0 && document.querySelector('.filters button[data-f="' + h0 + '"]')) {
+    filt(h0);
+    var fl = document.querySelector('.filters');
+    if (fl) setTimeout(function () { var t = (fl.closest('section') || fl).getBoundingClientRect().top + scrollY - 70; scrollTo(0, Math.max(0, t)); }, 60);
+  }
   document.querySelectorAll('[data-skill]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var f = a.getAttribute('data-skill');
