@@ -781,3 +781,10 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 .full-link{margin:18px 0 0}
 .full-link a{font-weight:700;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px;color:var(--ink)}
 .full-link a:hover{color:var(--redtext)}
+/* short / full switch on the smaller projects */
+.ver-switch{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;font-family:ArchivoV,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;animation:fade .8s both}
+.ver-switch a{color:inherit;opacity:.7;text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.ver-switch a:hover{opacity:1}
+.ver-switch a.on{opacity:1;border-bottom-color:var(--red)}
+.hero-band.paper .ver-switch a.on{border-bottom-color:var(--accent)}
+.ver-switch span{opacity:.5}
