@@ -253,6 +253,7 @@
       c.classList.remove('in'); if (show) { n++; void c.offsetWidth; c.classList.add('in'); }
     });
     if (more) more.classList.toggle('gone', f !== 'all');
+    document.querySelectorAll('[data-grp]').forEach(function (g) { g.classList.toggle('hide', f !== 'all'); });
     if (wh) {
       var b = document.querySelector('.filters button[data-f="' + f + '"]');
       var label = b ? b.firstChild.textContent : '';

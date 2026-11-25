@@ -915,3 +915,25 @@ dl.crd dt{font-weight:600;color:var(--ink);padding-right:16px}dl.crd dd{color:va
 .full-band p{margin:6px 0 0;font-size:17px;line-height:1.45;color:var(--ink);max-width:44ch}
 .full-band .full-cta{margin-top:0}
 .toc a.full-cta.side,.toc a.full-cta.side:hover{color:#fff;background:var(--red);border:0;opacity:1;white-space:nowrap}
+.series{margin:64px 0 8px;padding-top:36px;border-top:1px solid var(--line)}
+.ser-head h2{font-size:clamp(24px,2.4vw,34px);margin:8px 0 20px}
+.ser-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ser{display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid var(--line);color:inherit;background:#fff;transition:transform .25s,box-shadow .25s}
+a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.ser-im{display:block;aspect-ratio:16/10;background:var(--tint);overflow:hidden}.ser-im img{width:100%;height:100%;object-fit:cover;display:block}
+.ser-t{display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px;font-size:14px;line-height:1.4;color:var(--body)}
+.ser-t small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ser-t b{font-size:17px;color:var(--ink);line-height:1.2}
+.ser.here{opacity:.55;border-style:dashed}.ser.here small{color:var(--red)}
+@media (max-width:760px){.ser-row{grid-template-columns:1fr}.ser{flex-direction:row}.ser-im{width:38%;aspect-ratio:auto;min-height:110px;flex:none}}
+.sumgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:8px}
+.sg{display:flex;flex-direction:column;gap:6px;color:inherit;font-size:14.5px;line-height:1.45;color:var(--body)}
+.sg-im{display:block;aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:var(--sand)}.sg-im img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
+.sg:hover .sg-im img{transform:scale(1.04)}
+.sg b{font-size:18px;color:var(--ink);margin-top:6px}
+.sg-go{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.sumgrid{grid-template-columns:1fr}}
+.grp-label{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-top:1px solid var(--ink);padding-top:12px;margin-bottom:-14px}
+.grp-label b{font-family:ArchivoV,Helvetica,sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.grp-label span{font-size:13px;color:var(--muted)}
+.grp-label.hide{display:none}
