@@ -937,3 +937,15 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .grp-label b{font-family:ArchivoV,Helvetica,sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .grp-label span{font-size:13px;color:var(--muted)}
 .grp-label.hide{display:none}
+/* dark mode: the accent turns lime, so buttons on it need dark text; cards get a dark surface */
+:root[data-theme=dark] .full-cta,:root[data-theme=dark] .toc a.full-cta.side,:root[data-theme=dark] .toc a.full-cta.side:hover{color:#111;box-shadow:none}
+:root[data-theme=dark] .ser,:root[data-theme=dark] .soc,:root[data-theme=dark] .dp{background:var(--panel);border-color:var(--line)}
+:root[data-theme=dark] .ser-t{color:var(--body)}
+:root[data-theme=dark] .ser-t b{color:var(--ink)}
+:root[data-theme=dark] .ser-t small{color:var(--muted)}
+:root[data-theme=dark] .ser.here{opacity:1;border-color:var(--red)}
+:root[data-theme=dark] .ser.here .ser-im{opacity:.5}
+:root[data-theme=dark] .ser.here small{color:var(--red)}
+:root[data-theme=dark] .sg-go,:root[data-theme=dark] .soc-go,:root[data-theme=dark] .dp-go,:root[data-theme=dark] .mo-go,:root[data-theme=dark] .back-parent{color:var(--red)}
+/* light mode: the "you are here" card stays readable instead of fading everything */
+.ser.here{opacity:1}.ser.here .ser-im{opacity:.45}.ser.here b,.ser.here span{color:var(--muted)}
