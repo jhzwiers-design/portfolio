@@ -950,3 +950,10 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 /* light mode: the "you are here" card stays readable instead of fading everything */
 .ser.here{opacity:1}.ser.here .ser-im{opacity:.45}.ser.here b,.ser.here span{color:var(--muted)}
 .sumgrid .sg:first-child{grid-column:1/-1}.sumgrid .sg:first-child .sg-im{aspect-ratio:21/9}
+
+/* brand shapes (circle, square, right triangle from the JHZ initials), sized to look equal */
+.pill .bs{display:block;flex:none}
+.pill.solid .bs{color:currentColor}
+.shapes i:nth-child(1){width:18px;height:18px}
+.shapes i:nth-child(2){width:16px;height:16px;border-radius:0}
+.shapes i:nth-child(3){width:17px;height:22px;border:0;background:var(--accent);clip-path:polygon(0 0,100% 0,0 100%)}
