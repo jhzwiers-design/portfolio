@@ -261,7 +261,7 @@
     }
     var first = true;
     cards.forEach(function (c) { c.classList.remove('lead'); });
-    cards.forEach(function (c) { if (first && !c.classList.contains('hide') && c.hasAttribute('data-lead')) { c.classList.add('lead'); } if (!c.classList.contains('hide')) first = false; });
+    cards.forEach(function (c) { if (!c.classList.contains('hide') && c.hasAttribute('data-lead')) { c.classList.add('lead'); } });
   }
   function setHash(f) { try { history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f); } catch (e) {} }
   fbtns.forEach(function (b) { b.addEventListener('click', function () { var f = b.getAttribute('data-f'); filt(f); setHash(f); }); });
