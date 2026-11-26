@@ -726,13 +726,13 @@ body{background:var(--cream);color:var(--ink)}
 .steps-nav{background:color-mix(in srgb,var(--cream) 92%,transparent)!important}
 .panel,.about-teaser,.play{background:var(--panel)!important;color:var(--onpanel)!important}
 .status i{background:var(--red);box-shadow:none;animation:none}
-:root[data-theme=dark]{--cream:#0E0D0C;--ink:#EDE9E2;--red:#D7FF3A;--sand:#1E1C1A;--sand2:#191715;--line:#2E2B28;--muted:#9C958B;--body:#C9C3B9;--panel:#1A1816;--onpanel:#EDE9E2;color-scheme:dark}
+:root[data-theme=dark]{--cream:#1F1E1D;--ink:#EDE9E2;--red:#D7FF3A;--sand:#2B2927;--sand2:#262422;--line:#3B3835;--muted:#9C958B;--body:#C9C3B9;--panel:#2B2927;--onpanel:#EDE9E2;color-scheme:dark}
 :root[data-theme=dark] .pill.solid,:root[data-theme=dark] .step .num span,:root[data-theme=dark] .tbar .tseg{color:#fff}
-:root[data-theme=dark] .ph,:root[data-theme=dark] .grid .fr .ph,:root[data-theme=dark] .grid .wide .ph{background:#1A1816}
+:root[data-theme=dark] .ph,:root[data-theme=dark] .grid .fr .ph,:root[data-theme=dark] .grid .wide .ph{background:#2B2927}
 :root[data-theme=dark] .ph .zoom,:root[data-theme=dark] .vtoggle,:root[data-theme=dark] .vplay span{background:rgba(237,233,226,.92);color:#111}
 :root[data-theme=dark] .me{box-shadow:none}
 :root[data-theme=dark] .card .band img,:root[data-theme=dark] .hero-img{box-shadow:0 20px 50px rgba(0,0,0,.6)!important}
-:root[data-theme=dark] .facts div{border-color:#2E2B28}
+:root[data-theme=dark] .facts div{border-color:#3B3835}
 /* the switch itself: a slow cross-fade */
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.9s;animation-timing-function:ease}
 html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,border-color .9s ease,fill .9s ease!important}
@@ -766,7 +766,7 @@ html.theming,html.theming *{transition:background-color .9s ease,color .9s ease,
 :root[data-theme=dark] .step .num,:root[data-theme=dark] .kicker[style*="--accent"],:root[data-theme=dark] .chip b,:root[data-theme=dark] .card .kind{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
 .card.lead .kind{color:color-mix(in srgb,var(--accent) 40%,#fff)!important}
 .step .num{color:color-mix(in srgb,var(--accent) 80%,#000)}
-:root[data-theme=dark] .honest{background:color-mix(in srgb,var(--tint) 14%,#141210)!important}
+:root[data-theme=dark] .honest{background:color-mix(in srgb,var(--tint) 14%,#242220)!important}
 /* pause buttons for anything that keeps moving */
 .mq-wrap{position:relative}
 .mq-toggle{position:absolute;right:var(--gut);bottom:6px;z-index:2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink);background:var(--cream);color:var(--ink);display:grid;place-items:center;font-size:12px;cursor:pointer}
@@ -961,3 +961,11 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 @media (min-width:761px){.card.lead.flip .band{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.card.lead.flip .band .copy{order:2}.card.lead.flip .band img{order:1}}
 /* light mode: white on the signal orange is too low contrast for 14px text, so the full-case-study buttons use ink text */
 :root:not([data-theme=dark]) .full-cta,:root:not([data-theme=dark]) .toc a.full-cta.side,:root:not([data-theme=dark]) .toc a.full-cta.side:hover{color:#111}
+.arw{display:inline-block;vertical-align:-0.08em;flex:none;overflow:visible}
+.go .arw{width:18px;height:18px;vertical-align:0}
+/* card arrows: on hover the box fills, so the arrow must switch to the opposite colour (every theme) */
+.card:hover .go,.nx:hover .go{background:var(--ink)!important;border-color:var(--ink)!important;color:var(--cream)!important}
+.card.lead:hover .go{background:#F4EFE6!important;border-color:#F4EFE6!important;color:#111!important}
+.card.lead.paper:hover .go,.nx:hover .band.paper .go{background:#111!important;border-color:#111!important;color:#F3F2EE!important}
+.nx:hover .go{background:#F3F2EE!important;color:#111!important}
+:root[data-theme=dark] .card:hover .go{background:#EDE9E2!important;border-color:#EDE9E2!important;color:#111!important}
