@@ -957,3 +957,5 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .shapes i:nth-child(1){width:18px;height:18px}
 .shapes i:nth-child(2){width:16px;height:16px;border-radius:0}
 .shapes i:nth-child(3){width:17px;height:22px;border:0;background:var(--accent);clip-path:polygon(0 0,100% 0,0 100%)}
+/* the second wide card mirrors the first (image left, words right) so two wide cards in a row read as a pair, not a repeat */
+@media (min-width:761px){.card.lead.flip .band{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.card.lead.flip .band .copy{order:2}.card.lead.flip .band img{order:1}}
