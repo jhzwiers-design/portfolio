@@ -982,3 +982,8 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 :root:not([data-theme=dark]) .hero-band .full-cta .arw{color:#D23A12}
 :root:not([data-theme=dark]) .hero-band.paper .full-cta{background:#111!important;color:#F3F2EE!important}
 :root:not([data-theme=dark]) .hero-band.paper .full-cta .arw{color:#FF4A1C}
+/* new logo in the nav: the stair mark (orange on paper, lime on charcoal) + the name set like the wordmark */
+.brand{gap:10px}
+.brand .mk{width:30px;height:30px;flex:none;color:var(--red);transition:transform .4s var(--ease)}
+.brand:hover .mk{transform:translate(2px,2px)}
+.brand .wm{font-family:ArchivoV,Helvetica,sans-serif;font-weight:850;font-stretch:125%;letter-spacing:-.045em;font-size:18px;line-height:1;color:var(--ink)}
