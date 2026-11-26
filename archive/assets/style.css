@@ -969,3 +969,16 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .card.lead.paper:hover .go,.nx:hover .band.paper .go{background:#111!important;border-color:#111!important;color:#F3F2EE!important}
 .nx:hover .go{background:#F3F2EE!important;color:#111!important}
 :root[data-theme=dark] .card:hover .go{background:#EDE9E2!important;border-color:#EDE9E2!important;color:#111!important}
+/* light-mode contrast: orange is the brand mark, not a fill behind small text.
+   buttons are ink with paper text and an orange arrow; small orange words use the darker orange text colour (#B8300B, 5.4:1 on paper) */
+:root:not([data-theme=dark]){--red-text:#B8300B}
+:root:not([data-theme=dark]) .full-cta,:root:not([data-theme=dark]) .toc a.full-cta.side,:root:not([data-theme=dark]) .toc a.full-cta.side:hover{background:#111!important;color:#F3F2EE!important;box-shadow:0 6px 18px rgba(0,0,0,.14)}
+:root:not([data-theme=dark]) .full-cta .arw{color:#FF4A1C}
+:root:not([data-theme=dark]) .full-cta:hover{background:#2B2927!important}
+:root:not([data-theme=dark]) .kicker[style*="--red"],:root:not([data-theme=dark]) .clinks small,:root:not([data-theme=dark]) .ser.here small,:root:not([data-theme=dark]) .todo{color:var(--red-text)!important}
+:root:not([data-theme=dark]) .ftr a:hover,:root:not([data-theme=dark]) .mail a:hover,:root:not([data-theme=dark]) .cta:hover span,:root:not([data-theme=dark]) .card:hover h3{color:var(--red-text)}
+:root:not([data-theme=dark]) .hero-band .full-cta{background:#F3F2EE!important;color:#111!important;box-shadow:none}
+:root:not([data-theme=dark]) .hero-band .full-cta:hover{background:#fff!important}
+:root:not([data-theme=dark]) .hero-band .full-cta .arw{color:#D23A12}
+:root:not([data-theme=dark]) .hero-band.paper .full-cta{background:#111!important;color:#F3F2EE!important}
+:root:not([data-theme=dark]) .hero-band.paper .full-cta .arw{color:#FF4A1C}
