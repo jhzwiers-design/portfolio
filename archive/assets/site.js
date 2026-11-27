@@ -252,19 +252,7 @@
       c.classList.toggle('hide', !show);
       c.classList.remove('in'); if (show) { n++; void c.offsetWidth; c.classList.add('in'); }
     });
-    if (more) {
-      /* filtered views: the list below the tiles becomes "from the archive" for that label */
-      var na = 0;
-      more.querySelectorAll('.index a.ar').forEach(function (r) { var on = f !== 'all' && (' ' + r.getAttribute('data-k') + ' ').indexOf(' ' + f + ' ') > -1; r.hidden = !on; if (on) na++; });
-      more.querySelectorAll('.index a.pr').forEach(function (r) { r.hidden = f !== 'all'; });
-      more.classList.toggle('flt', f !== 'all');
-      more.classList.toggle('gone', f !== 'all' && !na);
-      var mh = more.querySelector('.more-head h2'), mp = more.querySelector('.more-head p');
-      var fb2 = document.querySelector('.filters button[data-f="' + f + '"]');
-      var lab = fb2 ? fb2.firstChild.textContent.replace(' & UX', '').toLowerCase() : '';
-      if (mh) mh.textContent = f === 'all' ? mh.getAttribute('data-h-all') : 'More ' + lab + ' from the archive.';
-      if (mp) mp.innerHTML = f === 'all' ? mp.getAttribute('data-p-all') : (NW[na] || na) + ' more ' + lab + (na === 1 ? ' project' : ' projects') + '. Each one opens in the <a href="archive/">archive</a>.';
-    }
+    if (more) more.classList.toggle('gone', f !== 'all');
     document.querySelectorAll('[data-grp]').forEach(function (g) { g.classList.toggle('hide', f !== 'all'); });
     if (wh) {
       var b = document.querySelector('.filters button[data-f="' + f + '"]');
