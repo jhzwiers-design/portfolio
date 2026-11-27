@@ -1038,3 +1038,7 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 /* home work header: heading on one line, filters on the next, both left-aligned, so nothing jumps when the heading changes */
 .work-head{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:18px}
 .work-head .filters{justify-content:flex-start;margin-left:0}
+/* short car-usage page: one piece per row, in order */
+.cw-stack{display:grid;gap:28px;margin-top:8px}
+.cw-motion{max-width:520px;margin:0 auto;width:100%}
+.cw-stack .play{margin-top:0}
