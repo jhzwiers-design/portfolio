@@ -287,6 +287,7 @@
   fbtns.forEach(function (b) { b.addEventListener('click', function () { var f = b.getAttribute('data-f'); filt(f); setHash(f); }); });
   /* a link like johnzwiers.com/#print opens with that filter on */
   var h0 = (location.hash || '').slice(1);
+  if (h0 === 'editorial') { h0 = 'print'; setHash('print'); }   /* editorial is folded into print */
   if (h0 && document.querySelector('.filters button[data-f="' + h0 + '"]')) {
     filt(h0);
     var fl = document.querySelector('.filters');
