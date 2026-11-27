@@ -1023,3 +1023,15 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .brand.pop .mk-s{transform:rotate(10deg) scale(.9)}
 .brand.pop .mk-t{transform:translate(26px,26px) rotate(-8deg)}
 .brand.pop-now .mk .mk-parts>*{transition:none!important}
+/* contact block: clearer order — headline, then email, then the three link cards.
+   the email no longer competes with the headline; card labels stay readable when the card inverts on hover */
+.mail{margin-top:22px}
+.mail a{font-size:clamp(22px,2.3vw,32px)}
+.clinks{margin-top:28px;align-items:stretch}
+.clinks a{min-height:96px}
+.clinks a:hover small{color:#C9C3B9!important}
+:root[data-theme=dark] .clinks a:hover small{color:#5E5B55!important}
+:root[data-theme=dark] .clinks a:hover b,:root[data-theme=dark] .clinks a:hover span{color:#111}
+/* scroll progress line: brand colour (orange on paper, lime on charcoal) instead of the old red */
+.prog{background:var(--red)}
+:root:not([data-theme=dark]) .clinks a:hover small{color:#C9C3B9!important}
