@@ -996,3 +996,8 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .cards .card.f-full .band{aspect-ratio:16/7}
 @media (max-width:1000px){.cards .card.f-sm,.cards .card.f-big{grid-column:span 3}.cards .card.f-tfull,.cards .card.f-full{grid-column:1/-1}.cards .card.f-tfull .band{aspect-ratio:16/8}}
 @media (max-width:640px){.cards .card.f-sm,.cards .card.f-big,.cards .card.f-tfull,.cards .card.f-full{grid-column:1/-1}.cards .card.f-tfull .band,.cards .card.f-full .band{aspect-ratio:5/4}}
+/* filtered home views: archive list replaces the moving strip, on every screen size */
+.index a[hidden]{display:none!important}
+.more-work.flt .mq-strip{display:none!important}
+.more-work.flt .index{display:block!important}
+.more-head p a{color:inherit;text-decoration:underline;text-underline-offset:3px}
