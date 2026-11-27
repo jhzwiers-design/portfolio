@@ -259,9 +259,29 @@
       var label = b ? b.firstChild.textContent : '';
       wh.textContent = f === 'all' ? wh.getAttribute('data-h-all') : label + ': ' + (NW[n] || n).toLowerCase() + (n === 1 ? ' project.' : ' projects.');
     }
+    fit(f);
     var first = true;
     cards.forEach(function (c) { c.classList.remove('lead'); });
     cards.forEach(function (c) { if (!c.classList.contains('hide') && c.hasAttribute('data-lead')) { c.classList.add('lead'); } });
+  }
+  /* filtered views: size the visible cards so every row is full.
+     desktop rows hold 2 big cards or 3 small ones; the bigger rows come first.
+     on tablets (2 per row) an odd count gives the first card the full width. */
+  function fit(f) {
+    var vis = [];
+    cards.forEach(function (c) { c.classList.remove('f-full', 'f-big', 'f-sm', 'f-tfull'); if (!c.classList.contains('hide')) vis.push(c); });
+    if (f === 'all' || !vis.length) return;
+    var n = vis.length, sizes = [];
+    if (n === 1) { sizes = ['f-full']; }
+    else {
+      var b3 = Math.floor(n / 3);
+      while (b3 > 0 && (n - 3 * b3) % 2) b3--;
+      var a2 = (n - 3 * b3) / 2;
+      for (var i = 0; i < a2 * 2; i++) sizes.push('f-big');
+      for (var j = 0; j < b3 * 3; j++) sizes.push('f-sm');
+    }
+    vis.forEach(function (c, i) { c.classList.add(sizes[i]); });
+    if (n % 2 === 1) vis[0].classList.add('f-tfull');
   }
   function setHash(f) { try { history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f); } catch (e) {} }
   fbtns.forEach(function (b) { b.addEventListener('click', function () { var f = b.getAttribute('data-f'); filt(f); setHash(f); }); });
