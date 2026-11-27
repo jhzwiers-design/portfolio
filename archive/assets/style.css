@@ -1001,3 +1001,18 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .more-work.flt .mq-strip{display:none!important}
 .more-work.flt .index{display:block!important}
 .more-head p a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* nav logo micro-animation: on hover the three shapes break apart along their diagonal, then snap back.
+   at rest the overlapping version (colour flips where shapes cross) is shown; the separate parts take over while moving */
+.brand .mk{overflow:visible}
+.brand:hover .mk{transform:none}
+.mk .mk-parts{opacity:0}
+.mk .mk-parts>*{transition:transform .45s cubic-bezier(.34,1.56,.64,1);transform-box:fill-box;transform-origin:center}
+.mk .mk-all{transition:opacity .12s .33s}
+.brand:hover .mk .mk-all,.brand:focus-visible .mk .mk-all{opacity:0;transition:opacity 0s}
+.brand:hover .mk .mk-parts,.brand:focus-visible .mk .mk-parts{opacity:1}
+.mk .mk-parts{transition:opacity 0s .45s}
+.brand:hover .mk .mk-parts,.brand:focus-visible .mk .mk-parts{transition:opacity 0s}
+.brand:hover .mk-c,.brand:focus-visible .mk-c{transform:translate(-24px,-24px) rotate(-10deg)}
+.brand:hover .mk-s,.brand:focus-visible .mk-s{transform:rotate(10deg) scale(.9)}
+.brand:hover .mk-t,.brand:focus-visible .mk-t{transform:translate(26px,26px) rotate(-8deg)}
+@media (prefers-reduced-motion:reduce){.mk .mk-parts>*,.mk .mk-all{transition:none!important}.brand:hover .mk-c,.brand:hover .mk-s,.brand:hover .mk-t{transform:none!important}.brand:hover .mk .mk-all{opacity:1!important}.brand:hover .mk .mk-parts{opacity:0!important}}
