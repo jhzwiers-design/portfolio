@@ -1035,3 +1035,6 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 /* scroll progress line: brand colour (orange on paper, lime on charcoal) instead of the old red */
 .prog{background:var(--red)}
 :root:not([data-theme=dark]) .clinks a:hover small{color:#C9C3B9!important}
+/* home work header: heading on one line, filters on the next, both left-aligned, so nothing jumps when the heading changes */
+.work-head{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:18px}
+.work-head .filters{justify-content:flex-start;margin-left:0}
