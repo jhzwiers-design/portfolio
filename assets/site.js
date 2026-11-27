@@ -1,5 +1,31 @@
 /* John Zwiers portfolio, round 1 */
 (function () {
+
+  /* nav logo on touch screens: a tap plays the break-apart, then goes home;
+     the home page opens with the shapes snapping back together */
+  (function () {
+    var br = document.querySelector('.brand');
+    if (!br) return;
+    var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var touch = matchMedia('(hover: none)').matches;
+    try {
+      if (sessionStorage.getItem('mkpop')) {
+        sessionStorage.removeItem('mkpop');
+        if (!calm) { br.classList.add('pop', 'pop-now'); requestAnimationFrame(function () { requestAnimationFrame(function () { br.classList.remove('pop-now'); setTimeout(function () { br.classList.remove('pop'); }, 30); }); }); }
+      }
+    } catch (e) {}
+    br.addEventListener('click', function (e) {
+      if (!touch || calm || e.metaKey || e.ctrlKey) return;
+      e.preventDefault();
+      var url = br.href, here = location.pathname.replace(/index\.html$/, '') === new URL(url).pathname.replace(/index\.html$/, '');
+      br.classList.add('pop');
+      setTimeout(function () {
+        if (here) { br.classList.remove('pop'); scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        try { sessionStorage.setItem('mkpop', '1'); } catch (err) {}
+        location.href = url;
+      }, 420);
+    });
+  })();
   document.documentElement.classList.remove('no-js');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -473,4 +499,5 @@
   bar.addEventListener('focusin', function (e) { var b = e.target.closest('.tseg'); if (b) show(b); });
   bar.addEventListener('mouseleave', function () { show(null); });
   bar.querySelectorAll('.tb-img').forEach(function (i) { i.loading = 'eager'; });
+
 })();

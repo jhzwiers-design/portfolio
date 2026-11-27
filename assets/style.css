@@ -1016,3 +1016,10 @@ a.ser:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
 .brand:hover .mk-s,.brand:focus-visible .mk-s{transform:rotate(10deg) scale(.9)}
 .brand:hover .mk-t,.brand:focus-visible .mk-t{transform:translate(26px,26px) rotate(-8deg)}
 @media (prefers-reduced-motion:reduce){.mk .mk-parts>*,.mk .mk-all{transition:none!important}.brand:hover .mk-c,.brand:hover .mk-s,.brand:hover .mk-t{transform:none!important}.brand:hover .mk .mk-all{opacity:1!important}.brand:hover .mk .mk-parts{opacity:0!important}}
+/* tap version of the logo break-apart (phones) */
+.brand.pop .mk .mk-all{opacity:0;transition:opacity 0s}
+.brand.pop .mk .mk-parts{opacity:1;transition:opacity 0s}
+.brand.pop .mk-c{transform:translate(-24px,-24px) rotate(-10deg)}
+.brand.pop .mk-s{transform:rotate(10deg) scale(.9)}
+.brand.pop .mk-t{transform:translate(26px,26px) rotate(-8deg)}
+.brand.pop-now .mk .mk-parts>*{transition:none!important}
